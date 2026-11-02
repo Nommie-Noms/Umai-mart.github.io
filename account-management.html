@@ -92,14 +92,7 @@
           </span>
         </label>
 
-        <label id="registration-type-label" hidden="">
-          Account type
-          <select id="registration-type">
-            <option value="business_owner">Customer account owner</option>
-            <option value="employee">Employee</option>
-          </select>
-          <span class="note">Employees have no business until an administrator adds them or they accept a business invitation.</span>
-        </label>
+        <p class="note">New accounts are customer accounts. Only an administrator can grant staff access.</p>
 
         <label id="display-label" hidden="">
           <span id="registration-name-label">Full name / account name</span>
@@ -248,6 +241,16 @@
             </span>
           </label>
           <button type="submit">Downgrade to employee</button>
+        </form>
+      </section>
+
+      <section class="card" id="staff-promotion-panel" hidden>
+        <h2>Upgrade customer to staff</h2>
+        <p id="staff-promotion-target"></p>
+        <p>Staff can use team chat and manage only assigned customers, orders and parcels. This does not grant administrator access. Customer records are retained, but the account will use the staff portal. The person must sign in again.</p>
+        <form id="staff-promotion-form">
+          <label><input id="staff-promotion-confirmed" type="checkbox" required> I intend to grant staff access to this account.</label>
+          <button type="submit">Upgrade to staff</button>
         </form>
       </section>
 
@@ -411,7 +414,7 @@
   <script src="assets/js/portal-compat.js?v=catalogue-1"></script>
   <script src="assets/js/vendor/supabase-2.57.4-compat.js?v=phone-1"></script>
   <script src="assets/js/portal-config.js"></script>
-  <script src="assets/js/store-config.js?v=catalogue-1"></script><script src="assets/js/product-images.js?v=catalogue-1"></script><script src="assets/js/delivery.js?v=catalogue-1"></script><script src="assets/js/portal-demo.js?v=catalogue-1"></script><script src="assets/js/portal.js?v=catalogue-1"></script>
+  <script src="assets/js/store-config.js?v=catalogue-1"></script><script src="assets/js/product-images.js?v=catalogue-1"></script><script src="assets/js/delivery.js?v=catalogue-1"></script><script src="assets/js/portal-demo.js?v=staff-1"></script><script src="assets/js/portal.js?v=staff-1"></script>
 
 
 </body></html>
