@@ -6,7 +6,7 @@ window.UMAI_STORE = {
   hours: '',
   phone: '',
   deliveryArea: 'Los Santos',
-  deliveryNote: 'Delivery ordering is coming soon. Browse the sample range and save your basket for later.',
+  deliveryNote: 'Sign in to place a delivery order, track its progress or book a parcel to leave at Umai Mart for collection.',
   products: [
     {id:'10000000-0000-4000-8000-000000000001',name:'Salmon onigiri',category:'Ready to eat',description:'Rice, salmon, nori. A little triangle of comfort.',price:120,art:'onigiri',label:'A little favourite'},
     {id:'10000000-0000-4000-8000-000000000002',name:'Chicken bento',category:'Ready to eat',description:'A proper lunch break, neatly packed.',price:350,art:'bento',label:'Lunch sorted'},

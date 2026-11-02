@@ -19,7 +19,7 @@
       var article=node('article','product'),art=node('div','product-art'),img=node('img');
       img.src='assets/images/product-'+(['onigiri','bento','ramen','tea','soda','chips','candy','pantry'].includes(p.art)?p.art:'pantry')+'.svg';img.alt='Illustrated '+p.name;img.width=440;img.height=360;img.loading='lazy';art.appendChild(img);
       if(p.label)art.appendChild(node('span','product-tag',p.label));article.appendChild(art);article.appendChild(node('p','product-category',p.category));article.appendChild(node('h3','',p.name));article.appendChild(node('p','product-description',p.description));
-      var bottom=node('div','product-bottom'),add=node('button','product-add','Add +');add.type='button';add.setAttribute('aria-label','Add '+p.name+' to your saved basket');add.onclick=function(){var old=cart[p.id] || 0;setQuantity(p.id,old+1);if(old<50)toast(p.name+' added to your basket.');};bottom.appendChild(node('span','product-price',money(p.price)));bottom.appendChild(add);article.appendChild(bottom);grid.appendChild(article);
+      var bottom=node('div','product-bottom'),add=node('button','product-add','Add +');add.type='button';add.setAttribute('aria-label','Add '+p.name+' to your saved basket');if(p.stock===0){add.disabled=true;add.textContent='Sold out';}add.onclick=function(){var old=cart[p.id] || 0;setQuantity(p.id,old+1);if(old<50)toast(p.name+' added to your basket.');};bottom.appendChild(node('span','product-price',money(p.price)));bottom.appendChild(add);article.appendChild(bottom);grid.appendChild(article);
     });
     if(!grid.children.length)grid.appendChild(node('p','','No products in this category yet.'));
   }
@@ -54,6 +54,14 @@
   window.addEventListener('storage',function(event){if(event.key===storageKey){cart=readCart();renderBasket();}});
   if(config.location)$('location-text').textContent=config.location;if(config.hours)$('hours-text').textContent=config.hours;if(config.deliveryNote)$('delivery-note').textContent=config.deliveryNote;
   if(config.phone){var phone=$('copy-phone');phone.disabled=false;phone.textContent=config.phone+' · Copy number';phone.onclick=async function(){toast(await copy(config.phone)?'Phone number copied.':'Copy is unavailable in this browser.');};}
-  if(!config.sampleMenu){$('sample-label').textContent='ALL PRICES · GTA$';$('menu-notice').textContent='Save a shopping list while delivery ordering is being prepared.';}
+  if(!config.sampleMenu){$('sample-label').textContent='ALL PRICES · GTA$';$('menu-notice').textContent='Save a shopping list and confirm live prices in the delivery portal.';}
   cart=readCart();renderProducts();renderBasket();
+  // A separate Umai Mart backend is optional until configured. Never contact Quill & Ink.
+  var backend=window.PORTAL_CONFIG;
+  if(backend && /^https:\/\/[a-z0-9-]+\.supabase\.co$/.test(backend.supabaseUrl || '') && backend.supabasePublishableKey && backend.supabaseUrl.indexOf('bbkrfeoglhwtuqdexkpu')===-1){
+   Promise.all(['store_products?available=eq.true&select=*','store_settings?select=*'].map(function(path){return fetch(backend.supabaseUrl+'/rest/v1/'+path,{headers:{apikey:backend.supabasePublishableKey}}).then(function(response){if(!response.ok)throw new Error('Live menu unavailable');return response.json();});})).then(function(result){
+    products=result[0].map(function(p){return Object.assign({},p,{art:p.illustration,label:p.stock===0?'Sold out':''});});byId={};products.forEach(function(p){byId[p.id]=p;});cart=readCart();renderProducts();renderBasket();
+    if(result[1][0]){config.sampleMenu=result[1][0].sample_menu;$('sample-label').textContent=config.sampleMenu?'SAMPLE MENU · GTA$':'ALL PRICES · GTA$';$('menu-notice').textContent=result[1][0].ordering_enabled?'Confirm your delivery details and final total in the portal.':'New delivery and parcel bookings are paused.';}
+   }).catch(function(){$('menu-notice').textContent='The live menu could not load. This is the sample range; confirm availability in the delivery portal.';});
+  }
 }());
