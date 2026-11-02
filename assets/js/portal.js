@@ -49,7 +49,7 @@
  function check(result) { if(result.error) throw new Error(result.error.message); return result.data; }
  function setMode(next) {
   mode = next;
-  hide('registration-type-label',next!=='register');hide('display-label',next!=='register'); hide('recovery-label',next!=='recover');
+  hide('display-label',next!=='register'); hide('recovery-label',next!=='recover');
   $('display-name').required = next==='register'; $('recovery-input').required = next==='recover';
   $('password').autocomplete = next==='login' ? 'current-password' : 'new-password';
   $('auth-title').textContent = next==='login' ? 'Sign in' : next==='register' ? 'Create account' : 'Reset your password';
@@ -81,7 +81,7 @@
   ['business-member-list','business-invitations','joined-business-list'].forEach(function(id){text(id,'');});
   ['business-members-section','business-invitations-section','joined-business-section'].forEach(function(id){hide(id,true);});
   hide('password-change',true);hide('staff-recovery',true);hide('staff-reset-result',true);
-  version++;user=null;profile=null;selected=null;staff=false;administrator=false;names={};usernames={};staffIds=[];accountTypes={};employeeDirectory=[];hide('employee-members-panel',true);text('employee-member-list','');text('employee-select','');memberships=[];businesses=[];memberIds={};staffSenderIds={};
+  hide('staff-promotion-panel',true);if($('staff-promotion-confirmed'))$('staff-promotion-confirmed').checked=false;version++;user=null;profile=null;selected=null;staff=false;administrator=false;names={};usernames={};staffIds=[];accountTypes={};employeeDirectory=[];hide('employee-members-panel',true);text('employee-member-list','');text('employee-select','');memberships=[];businesses=[];memberIds={};staffSenderIds={};
   clearPackage();hide('service-editor',true);text('messages','');text('client-select','');
   text('account-name','');value('message','');
   hide('dashboard',true);hide('account',false);
@@ -183,6 +183,9 @@
   if(page==='management'){
    var requested=selected,requestTicket=++version;
    var permitted=!!selected && selected!==user.id;
+   hide('staff-promotion-panel',!(permitted && administrator && !staffIds.includes(selected)));
+   text('staff-promotion-target','Selected account: @'+(usernames[selected] || ''));
+   if($('staff-promotion-confirmed'))$('staff-promotion-confirmed').checked=false;
    hide('owner-upgrade-panel',!(permitted && administrator && accountTypes[selected]==='employee' && !staffIds.includes(selected)));
    hide('owner-downgrade-panel',!(permitted && administrator && accountTypes[selected]==='business_owner' && !staffIds.includes(selected)));
    text('owner-downgrade-target','Selected business owner: @'+(usernames[selected] || ''));
@@ -518,6 +521,13 @@
   clearDowngrade();var session=check(await client.auth.getSession()).session;await loadDashboard(session);
   status('Business owner downgraded to employee. Their former business records are retained. They must sign in again.');toast('Employee downgrade saved.');
  });});
+ bind('staff-promotion-form','onsubmit',function(event){event.preventDefault();run(async function(){
+  var target=selected;
+  if(!administrator || !target || target===user.id || staffIds.includes(target))throw new Error('Select a customer account.');
+  if(!$('staff-promotion-confirmed').checked)throw new Error('Confirm the staff upgrade.');
+  check(await client.rpc('promote_customer_to_staff',{target:target}));
+  var current=check(await client.auth.getSession());await loadDashboard(current.session);status('Staff access granted. Ask the person to sign in again, then assign their customers, orders or parcels.');
+ });});
  bind('owner-upgrade-form','onsubmit',function(event){event.preventDefault();run(async function(){
   var target=selected;
   if(!administrator || !target || accountTypes[target]!=='employee' || staffIds.includes(target))throw new Error('Select a customer employee account.');
@@ -760,7 +770,7 @@
    if(result.error)throw new Error('Could not sign in. Check your username and password.');
    $('password').value='';await loadDashboard(result.data.session);
   } else {
-   var result=await accountAction({action:mode,username:username,password:password,displayName:$('display-name').value,accountType:$('registration-type').value,recoveryCode:$('recovery-input').value});
+   var result=await accountAction({action:mode,username:username,password:password,displayName:$('display-name').value,accountType:'business_owner',recoveryCode:$('recovery-input').value});
    $('password').value='';$('recovery-input').value='';$('recovery-output').value=result.recoveryCode;
    hide('account',true);hide('recovery-result',false);status('Save the code, then sign in with your password.');
   }
