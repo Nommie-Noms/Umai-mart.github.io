@@ -5,3 +5,23 @@ body.umai-portal{background:#fff9ed;color:#1b3e32;font-family:Arial,Helvetica,sa
 @media(max-width:400px){body.umai-portal header img{width:115px}body.umai-portal header{gap:10px}}
 .catalogue-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:22px 0}.catalogue-actions .note{margin:0;flex:1;min-width:180px}.catalogue-photo{margin:20px 0;padding:16px;background:#edf0df;border-radius:5px}.catalogue-preview{margin:24px 0 10px;padding:20px;max-width:360px;background:#edf0df;border:1px solid #d9decb;border-radius:5px}.catalogue-preview img{width:220px;height:180px;object-fit:contain;margin:0 auto 16px}.catalogue-preview strong{display:block;font-size:20px}.catalogue-preview p:not(.eyebrow){margin:7px 0;font-size:12px}.catalogue-preview>span{font-weight:700}.order-product img{height:54px;object-fit:contain}
 .store-preferences{margin-top:26px;border-top:1px solid #d9decb;padding-top:18px}.store-preferences>summary{font-weight:700;cursor:pointer}
+
+/* Header controls: transparent bell and a clearer hamburger button. */
+body.umai-portal header .portal-notification-bell,
+body.umai-portal header .portal-notification-bell:hover,
+body.umai-portal header .portal-notification-bell:focus,
+body.umai-portal header .portal-notification-bell:active{
+  background:transparent;
+  box-shadow:none;
+  border:0;
+  padding:4px;
+  min-width:44px;
+  min-height:44px;
+}
+body.umai-portal header .portal-menu-toggle{
+  min-width:48px;
+  min-height:48px;
+  padding:8px 12px;
+  font-size:30px;
+  line-height:1;
+}
