@@ -9,8 +9,8 @@ function safePortalURL(value) {
 }
 self.addEventListener('push',function(event){
   var payload={};try {payload=event.data?event.data.json():{};}catch(error){}
-  event.waitUntil(self.registration.showNotification('Umai Mart · OOC',{
-    body:'OOC reminder: You have a new portal notification. Open the portal to read it.',
+  event.waitUntil(self.registration.showNotification('Umai Mart · ',{
+    body:'You have a new portal notification. Open the portal to read it.',
     icon:new URL('./assets/images/apple-touch-icon.png',self.registration.scope).href,
     tag:'umai-'+(payload.messageId || 'new-message'),
     data:{url:safePortalURL(payload.url)}
