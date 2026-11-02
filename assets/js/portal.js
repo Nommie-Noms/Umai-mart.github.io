@@ -691,7 +691,7 @@
    var enabled=subscription?check(await client.rpc('administrator_push_device_status',{device_endpoint:subscription.endpoint})):false;
    if(ticket!==pushSetupVersion || !user || user.id!==actor)return;
    hide('disable-portal-push',!enabled);$('enable-portal-push').disabled=Notification.permission==='denied';
-   text('portal-push-status',Notification.permission==='denied'?'Notifications are blocked. Allow them in this browser or device settings, then reopen this page.':enabled?'OOC push notifications are enabled for this account on this device.':'OOC push notifications are off for this account on this device. Select Enable to allow them.');
+   text('portal-push-status',Notification.permission==='denied'?'Notifications are blocked. Allow them in this browser or device settings, then reopen this page.':enabled?' push notifications are enabled for this account on this device.':' push notifications are off for this account on this device. Select Enable to allow them.');
   }catch(error){if(ticket===pushSetupVersion)text('portal-push-status',error.message || 'Push setup could not load. Reopen Account Settings to try again.');}
   finally {clearTimeout(timer);syncPushControls();}
  }
@@ -708,7 +708,7 @@
    if(!user || actor!==user.id)return;
    var saved=subscription.toJSON();
    check(await client.rpc('register_administrator_push',{device_endpoint:saved.endpoint,public_key:saved.keys.p256dh,auth_secret:saved.keys.auth}));
-   hide('disable-portal-push',false);text('portal-push-status','OOC push notifications are enabled for this account on this device.');toast('Push notifications enabled.');
+   hide('disable-portal-push',false);text('portal-push-status',' push notifications are enabled for this account on this device.');toast('Push notifications enabled.');
   });
  });
  bind('disable-portal-push','onclick',function(){run(async function(){

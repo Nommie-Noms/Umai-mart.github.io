@@ -1,11 +1,11 @@
-/* Edit store details and the sample range here. All prices are GTA roleplay dollars. */
+/* Edit store details and the sample range here. All prices are dollars. */
 window.UMAI_STORE = {
   name: 'Umai Mart',
   sampleMenu: true,
   location: '',
   hours: '',
   phone: '',
-  deliveryArea: 'Los Santos',
+  deliveryArea: 'your neighbourhood',
   deliveryNote: 'Sign in to place a delivery order, track its progress or book a parcel to leave at Umai Mart for collection.',
   products: [
     {id:'10000000-0000-4000-8000-000000000001',name:'Salmon onigiri',category:'Ready to eat',description:'Rice, salmon, nori. A little triangle of comfort.',price:120,art:'onigiri',label:'A little favourite'},
