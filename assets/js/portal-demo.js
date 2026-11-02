@@ -27,7 +27,7 @@
   else if(name==='portal_announcement_unread_count')data=notes.length;
   else if(name.includes('unread') || name==='administrator_push_device_status')data=0;
   else if(name==='mark_portal_announcement_read'){notes=notes.filter(function(n){return n.notification_id!==args.announcement;});data=null;}
-  else if(name==='visible_store_order_pins')data=orders.filter(function(o){return args.targets.includes(o.id) && !['delivered','collected','cancelled'].includes(o.status);}).map(function(o){return {order_id:o.id,pin:'1234'};});
+  else if(name==='visible_store_order_pins')data=orders.filter(function(o){return (isAdmin || o.client_id===id) && args.targets.includes(o.id) && !['delivered','collected','cancelled'].includes(o.status);}).map(function(o){return {order_id:o.id,pin:'1234'};});
   else if(name==='complete_store_order'){var order=orders.find(function(o){return o.id===args.target;});data=!!(isStaff && order && args.handover_pin==='1234');if(data)order.status=order.fulfilment_method==='collection'?'collected':'delivered';}
   else if(name==='delete_store_order'){if(!isAdmin)error={message:'Administrator access required'};else{var target=orders.find(function(o){return o.id===args.target;});if(target && args.confirmation==='UM-D'+String(target.order_no).padStart(5,'0'))orders=orders.filter(function(o){return o.id!==args.target;});else error={message:'Enter the exact order reference'};}data=null;}
   else if(name==='end_portal_session'){session=null;data=null;}
