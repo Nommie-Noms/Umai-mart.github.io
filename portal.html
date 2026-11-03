@@ -16,6 +16,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/css/store.css?v=catalogue-1"><link rel="stylesheet" href="assets/css/umai-portal.css?v=catalogue-1">  <link rel="stylesheet" href="assets/css/delivery-map.css?v=gestures-1">
+  <link rel="stylesheet" href="assets/css/rewards.css?v=rewards-1">
 </head>
 
 <body data-portal-page="dashboard" class="umai-portal">
@@ -45,7 +46,7 @@
         </a>
 
         <a class="button-link" id="management-link" href="account-management.html" hidden="">
-          Account management
+          Store management
         </a>
 
         <a class="button-link" id="staff-chat-link" href="staff-chat.html" hidden="">Staff chat</a>
@@ -206,7 +207,8 @@
       </p>
 
       <p class="eyebrow" id="business-view-role"></p>
-      <div class="" id="client-content">
+      <section class="card rewards-card" id="rewards-account" hidden><details><summary><strong>Your rewards</strong> · <span id="reward-balance">0</span> points</summary><p id="reward-rate" class="note"></p><p class="note">Points belong to your personal login, including orders placed for a shared customer account. Delivery and parcel fees do not earn points.</p><button type="button" id="reward-refresh">Refresh rewards</button><p id="reward-status" role="status" aria-live="polite"></p><h3>Available rewards</h3><div id="reward-list"></div><h3>Your reward claims</h3><div id="reward-claims"></div><details><summary>Points history</summary><div id="reward-history"></div></details></details></section>
+<section class="card" id="reward-team" hidden><details><summary>Reward collection queue</summary><p class="note">Match the customer's name and claim reference before handing over a reward. Cancelling a pending claim returns its points once.</p><button type="button" id="reward-queue-refresh">Refresh claims</button><p id="reward-team-status" role="status" aria-live="polite"></p><div id="reward-queue"></div></details></section><div class="" id="client-content">
         <!-- Package and documentation -->
         
 
@@ -310,7 +312,7 @@
   <script src="assets/js/portal-compat.js?v=catalogue-1"></script>
   <script src="assets/js/vendor/supabase-2.57.4-compat.js?v=phone-1"></script>
   <script src="assets/js/portal-config.js"></script>
-  <script src="assets/js/store-config.js?v=catalogue-1"></script><script src="assets/js/product-images.js?v=catalogue-1"></script><script src="assets/js/delivery-map.js?v=gestures-1"></script><script src="assets/js/delivery.js?v=map-1"></script><script src="assets/js/portal-demo.js?v=map-1"></script><script src="assets/js/portal.js?v=staff-1"></script>
+  <script src="assets/js/store-config.js?v=catalogue-1"></script><script src="assets/js/product-images.js?v=catalogue-1"></script><script src="assets/js/delivery-map.js?v=gestures-1"></script><script src="assets/js/delivery.js?v=map-1"></script><script src="assets/js/rewards.js?v=rewards-1"></script><script src="assets/js/portal-demo.js?v=rewards-1"></script><script src="assets/js/portal.js?v=rewards-1"></script>
 
 
 </body></html>
