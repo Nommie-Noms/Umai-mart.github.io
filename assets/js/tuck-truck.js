@@ -9,11 +9,10 @@
   banner.setAttribute('data-location-label',label);banner.textContent='';banner.hidden=!label;if(!label)return;
   var track=document.createElement('span');track.className='tuck-truck-track';
   var text=document.createElement('span');text.className='tuck-truck-text';text.textContent=label;
-  var image=document.createElement('img');image.className='tuck-truck-van';image.src='assets/images/tuck-truck-van.png';image.alt='';image.setAttribute('aria-hidden','true');image.width=100;image.height=50;
+  var image=document.createElement('img');image.className='tuck-truck-van';image.src='assets/images/tuck-truck-van-smoke.png';image.alt='';image.setAttribute('aria-hidden','true');image.width=100;image.height=50;
   image.onerror=function(){image.hidden=true;};track.appendChild(text);track.appendChild(image);
   var lane=document.createElement('span');lane.className='tuck-truck-lane';lane.appendChild(track);banner.appendChild(lane);
-  var pause=document.createElement('button');pause.type='button';pause.className='tuck-truck-pause';pause.textContent='Pause';pause.setAttribute('aria-label','Pause scrolling banner');pause.setAttribute('aria-pressed','false');
-  pause.onclick=function(){var stopped=banner.classList.toggle('tuck-truck-paused');pause.textContent=stopped?'Play':'Pause';pause.setAttribute('aria-label',stopped?'Resume scrolling banner':'Pause scrolling banner');pause.setAttribute('aria-pressed',String(stopped));};banner.appendChild(pause);
+
  }
  async function refresh(){
   var config=window.PORTAL_CONFIG;
