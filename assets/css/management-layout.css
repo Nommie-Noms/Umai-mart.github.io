@@ -1,0 +1,7 @@
+body[data-management-view] main{max-width:1400px;width:calc(100% - 40px)}
+.management-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:start}
+.management-grid>.card{width:100%;max-width:none;margin:0;min-width:0;box-sizing:border-box}
+.management-account-picker{margin:0 0 24px}
+.management-grid input,.management-grid select,.management-grid textarea{max-width:100%;box-sizing:border-box}
+.management-grid #tuck-truck-management{grid-column:1}
+@media(max-width:850px){.management-grid{grid-template-columns:minmax(0,1fr)}body[data-management-view] main{width:calc(100% - 28px)}.management-grid #tuck-truck-management{grid-column:auto}}
