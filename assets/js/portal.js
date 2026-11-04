@@ -73,7 +73,7 @@
   if(sessionTimer)clearInterval(sessionTimer);sessionTimer=null;sessionCheckBusy=false;
   clearDowngrade();stopNotifications();ownAdminChat=false;hide('owner-upgrade-panel',true);value('owner-business-name','');if($('owner-upgrade-confirmed'))$('owner-upgrade-confirmed').checked=false;if(employeeChatTimer)clearInterval(employeeChatTimer);employeeChatTimer=null;employeeChatSignature='';employeeChatLoadedTarget=null;employeeRequestedMessage=null;employeeChatBusy=false;hide('employee-admin-chat',true);text('employee-chat-messages','');value('employee-chat-message','');hide('notification-panel',true);hide('notifications-button',true);if($('notifications-button'))$('notifications-button').setAttribute('aria-expanded','false');text('notification-list','');text('notification-count','0');hide('notification-count',true);text('notification-state','');
   clearOwnRecovery();
-  hide('restricted',true);hide('account-deletion',true);hide('management-link',true);hide('staff-chat-link',true);hide('staff-assignment-panel',true);text('staff-assignment-list','');text('assignment-staff','');text('staff-chat-messages','');value('staff-chat-message','');staffDirectory=[];scopeClients=[];scopeSignature='';staffChatSignature='';
+  hide('restricted',true);hide('account-deletion',true);hide('management-link',true);hide('account-management-link',true);hide('staff-chat-link',true);hide('staff-assignment-panel',true);text('staff-assignment-list','');text('assignment-staff','');text('staff-chat-messages','');value('staff-chat-message','');staffDirectory=[];scopeClients=[];scopeSignature='';staffChatSignature='';
   ['settings-username','settings-business','settings-password','delete-confirm','delete-password','issued-password','issued-code','current-temporary','permanent-password','verification-note'].forEach(function(id){value(id,'');});
   if($('delete-acknowledged'))$('delete-acknowledged').checked=false;
   if($('identity-confirmed'))$('identity-confirmed').checked=false;
@@ -152,7 +152,7 @@
   if(window.UMAI_DELIVERY)await window.UMAI_DELIVERY.mount({client:client,user:user,profile:profile,staff:staff,administrator:administrator,page:page,selected:!staff && accountTypes[accountId]==='business_owner'?accountId:null});
   if(window.UMAI_TUCK_TRUCK)await window.UMAI_TUCK_TRUCK.mount({client:client,administrator:administrator,page:page});
   if(window.UMAI_REWARDS)await window.UMAI_REWARDS.mount({client:client,user:user,staff:staff,administrator:administrator,page:page});
-  hide('announcement-composer',page!=='management' || !administrator);hide('portal-menu-button',false);hide('notifications-button',false);hide('management-link',!staff);hide('staff-chat-link',!staff);hide('client-label',!staff);hide('service-editor',true);
+  hide('announcement-composer',page!=='management' || !administrator || document.body.dataset.managementView==='accounts');hide('portal-menu-button',false);hide('notifications-button',false);hide('management-link',!staff);hide('account-management-link',!staff);hide('staff-chat-link',!staff);hide('client-label',!staff);hide('service-editor',true);
   if(page==='settings'){hide('account',true);hide('dashboard',false);loadPortalPush();await loadBusinessSettings();startNotifications();return;}
   if((page==='management' || page==='staff-chat') && !staff){hide('account',true);hide('restricted',false);status('Staff access is required for this page.');startNotifications();return;}
   if(page==='staff-chat'){
