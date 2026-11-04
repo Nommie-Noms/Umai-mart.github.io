@@ -6,11 +6,10 @@
 /* Text and van travel together from left to right. */
 .tuck-truck-banner{position:relative;padding:0;color:#174c3d;overflow:hidden;display:flex;align-items:center;height:76px;text-align:left}
 .tuck-truck-lane{display:block;position:relative;flex:1;min-width:0;height:100%;overflow:hidden}
-.tuck-truck-track{position:absolute;left:0;top:0;height:100%;display:inline-flex;align-items:center;gap:16px;white-space:nowrap;animation:tuck-truck-drive-right 22s linear infinite;will-change:transform}
+.tuck-truck-track{position:absolute;left:0;top:0;height:100%;display:inline-flex;align-items:center;gap:16px;white-space:nowrap;animation:tuck-truck-drive-right 16s linear infinite;will-change:transform}
 .tuck-truck-van{display:block!important;width:100px!important;height:50px!important;max-width:none!important;object-fit:contain;flex:0 0 auto}
 .tuck-truck-van[hidden]{display:none!important}
-.tuck-truck-pause,body.umai-portal .tuck-truck-pause{flex:0 0 auto;margin:0 12px;padding:7px 10px;background:transparent;color:#174c3d;border:1px solid #174c3d;border-radius:4px;font:700 11px/1.4 Arial,Helvetica,sans-serif;cursor:pointer}
-.tuck-truck-banner:hover .tuck-truck-track,.tuck-truck-banner:focus-within .tuck-truck-track,.tuck-truck-paused .tuck-truck-track{animation-play-state:paused}
+.tuck-truck-banner:hover .tuck-truck-track,.tuck-truck-banner:focus-within .tuck-truck-track{animation-play-state:paused}
 @keyframes tuck-truck-drive-right{from{transform:translateX(-100%)}to{transform:translateX(100vw)}}
 @media(max-width:600px){.tuck-truck-banner{padding:0;height:68px;font-size:14px}.tuck-truck-van{width:84px!important;height:44px!important}.tuck-truck-track{gap:10px}}
 @media(prefers-reduced-motion:reduce){.tuck-truck-banner{height:auto;min-height:68px}.tuck-truck-lane{height:auto;overflow:visible}.tuck-truck-track{position:static;animation:none;white-space:normal;padding:10px 18px;will-change:auto}.tuck-truck-text{overflow-wrap:anywhere}.tuck-truck-pause{display:none}}
