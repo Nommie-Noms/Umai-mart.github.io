@@ -1,0 +1,7 @@
+/* Original Umai green and cream theme with pink in place of orange. */
+:root{--orange:#F9D6E0}
+.primary,.primary:hover,.ticker,.tuck-truck-banner{color:#174c3d}
+.primary:hover{background:#EBC1CF}
+body.umai-portal button,body.umai-portal .button-link{color:#174c3d}
+body.umai-portal .danger-button,body.umai-portal .danger-button:hover{background:#a7442c;color:#fff9ed}
+body.umai-portal header .portal-notification-bell,body.umai-portal header .portal-notification-bell:hover{background:transparent}
