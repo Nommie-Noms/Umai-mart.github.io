@@ -1,8 +1,9 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en"><head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Store management | Umai Mart</title>
+  <title>Account management | Umai Mart</title>
 
   <link rel="icon" href="assets/images/app-icon.svg">
 
@@ -18,9 +19,9 @@
 <link rel="stylesheet" href="assets/css/store.css?v=catalogue-1"><link rel="stylesheet" href="assets/css/umai-portal.css?v=catalogue-1">  <link rel="stylesheet" href="assets/css/delivery-map.css?v=gestures-1">
   <link rel="stylesheet" href="assets/css/rewards.css?v=rewards-1">
   <link rel="stylesheet" href="assets/css/tuck-truck.css?v=1">
-</head>
+<link rel="stylesheet" href="assets/css/management-layout.css?v=1"></head>
 
-<body data-portal-page="management" class="umai-portal">
+<body data-portal-page="management" class="umai-portal" data-management-view="accounts">
   <!-- Header -->
   <header>
     <a href="account-management.html" id="logo-refresh" aria-label="Refresh current page" title="Refresh current page">
@@ -46,9 +47,7 @@
           Account settings
         </a>
 
-        <a class="button-link" id="management-link" href="account-management.html" hidden="" aria-current="page">
-          Store management
-        </a>
+        <a class="button-link" id="management-link" href="store-management.html" hidden="">Store management</a><a class="button-link" id="account-management-link" href="account-management.html" hidden="" aria-current="page">Account management</a>
 
         <a class="button-link" id="staff-chat-link" href="staff-chat.html" hidden="">Staff chat</a>
 
@@ -68,8 +67,8 @@
   <section class="portal-hero">
     <div class="hero-inner">
       <p class="eyebrow">LITTLE STORE. BIG GOODNESS.</p>
-      <h1>Store management.</h1>
-      <p>Orders, parcels, products and the people who keep Umai moving.</p>
+      <h1>Account management.</h1>
+      <p>Manage customer access, account recovery and rewards.</p>
     </div>
   </section>
 
@@ -181,69 +180,19 @@
     </section>
 
     <!-- Store management dashboard -->
-    <section id="dashboard" hidden="">
-      <section class="card" id="tuck-truck-management" hidden>
-        <h2>Tuck truck banner</h2>
-        <p>Show the truck’s current location on the main website and delivery portal. This location is public.</p>
-        <form id="tuck-truck-form">
-          <label class="tuck-truck-toggle"><input id="tuck-truck-enabled" type="checkbox"> Enable tuck truck banner</label>
-          <label>Location<input id="tuck-truck-location" maxlength="160" placeholder="e.g. Legion Square"></label>
-          <button type="submit">Save banner</button>
-        </form>
-        <p id="tuck-truck-status" role="status" aria-live="polite"></p>
-      </section>
-      <div class="actions">
+    <section id="dashboard" hidden=""><div class="actions">
         <div>
           <p class="eyebrow" id="role-label">CUSTOMER ACCOUNT</p>
           <h2 id="account-name"></h2>
         </div>
-      </div>
-
-
-
-
-
-      <section class="card" id="announcement-composer" hidden="">
-        <p class="eyebrow">ADMINISTRATOR · ALL ACCOUNTS</p>
-        <h2>Send an announcement</h2>
-        <p>Post a notice to every existing account’s notification bell. Accounts with push enabled also receive a generic  reminder on their subscribed devices.</p>
-        <form id="announcement-form">
-          <label>Title
-            <input id="announcement-title" maxlength="100" required="">
-          </label>
-          <label>Announcement
-            <textarea id="announcement-body" rows="5" maxlength="2000" required=""></textarea>
-          </label>
-          <div class="announcement-preview" aria-label="Announcement preview">
-            <p class="eyebrow">PREVIEW</p>
-            <strong id="announcement-preview-title">Announcement title</strong>
-            <p id="announcement-preview-body">Your announcement will appear here.</p>
-          </div>
-          <label class="announcement-confirmation">
-            <input id="announcement-confirmed" type="checkbox" required="">
-            <span>I intend to send this announcement to every portal account.</span>
-          </label>
-          <button type="submit">Send to all accounts</button>
-        </form>
-        <p id="announcement-send-status" role="status" aria-live="polite"></p>
-      </section>
-
-      <section id="store-manager" class="card" hidden=""><p class="eyebrow">ADMINISTRATOR · SHOP SETTINGS</p><h2>Products &amp; stock</h2><button id="store-menu-refresh" type="button">Reload stock</button><div class="catalogue-actions"><button type="button" id="store-add-product">Add new item +</button><p class="note">Add a product once here. Visible products appear on the storefront automatically.</p></div><label>Product<select id="store-product-select"><option value="">New product</option></select></label><form id="store-product-form"><label>Name<input id="store-product-name" maxlength="100" required=""></label><label>Category<input id="store-product-category" required="" maxlength="60" list="store-category-options" placeholder="Choose a category or type a new one"><datalist id="store-category-options"></datalist></label><label>Description<textarea id="store-product-description" maxlength="300" rows="2"></textarea></label><label>Price ($)<input id="store-product-price" type="number" min="0" max="10000000" step="0.01" required=""></label><label>Available stock<input id="store-product-stock" type="number" min="0" max="100000" required=""></label><div class="catalogue-photo"><label>Product photo<input id="store-product-file" type="file" accept="image/jpeg,image/png,image/webp"><span class="note">JPG, PNG or WebP, up to 5 MB. Product photos are public.</span></label><button type="button" id="store-upload-photo">Upload selected photo</button><label>Photo URL (optional)<input id="store-product-image" type="url" maxlength="2048" placeholder="https://…"><span class="note">Upload a photo above or paste a hosted image URL. Leave blank to use an illustration.</span></label></div><label>Illustration<select id="store-product-art"><option>onigiri</option><option>bento</option><option>ramen</option><option>tea</option><option>soda</option><option>chips</option><option>candy</option><option>pantry</option></select></label><label class="check-row"><input type="checkbox" id="store-product-available" checked="">Show this product on the menu</label><div class="catalogue-preview" aria-label="Product preview"><p class="eyebrow">LIVE PREVIEW</p><img id="store-preview-image" alt="Product preview" width="220" height="180"><strong id="store-preview-name">New item</strong><p id="store-preview-category">Category</p><p id="store-preview-description"></p><span id="store-preview-price">$0.00</span></div><button>Save item</button></form><p id="store-manager-status" role="status" aria-live="polite"></p><details class="store-preferences"><summary>Delivery fees and ordering settings</summary><form id="store-settings-form"><p class="note">Delivery fee: 10% of the items subtotal, rounded to the nearest cent. Collection has no delivery fee.</p><input type="hidden" id="store-delivery-fee"><label>Parcel holding fee ($)<input type="number" id="store-parcel-fee" min="0" max="10000000" step="0.01" required=""></label><label class="check-row"><input type="checkbox" id="store-enabled">Accept new orders and parcel bookings</label><label class="check-row"><input type="checkbox" id="store-sample">Show sample menu / price notice</label><button>Save store settings</button></form></details></section><section class="card" id="reward-management" hidden><p class="eyebrow">ADMINISTRATOR · LOYALTY</p><h2>Rewards management</h2><p id="reward-admin-status" role="status" aria-live="polite"></p>
-<details class="reward-admin-part" open><summary>Earning rules</summary><form id="reward-rules-form"><label class="check-row"><input type="checkbox" id="reward-enabled">Earn points on new orders</label><label>Spend amount ($)<input type="number" id="reward-spend" min="1" max="1000000" step="0.01" required></label><label>Points per spend amount<input type="number" id="reward-earn" min="1" max="1000" step="1" required></label><p class="note">Whole spend blocks only. For example, 1 point per $100 gives 2 points for $250 of items. Rules are saved with new orders. Points are awarded after payment is marked paid and the handover PIN completes delivery or collection. Earlier orders are not backfilled.</p><button>Save earning rules</button></form></details>
-<details class="reward-admin-part"><summary>Reward catalogue</summary><label>Reward<select id="reward-edit-select"><option value="">New reward</option></select></label><button type="button" id="reward-new">Add new reward</button><form id="reward-edit-form"><label>Reward name<input id="reward-title" maxlength="80" required></label><label>What the customer receives<textarea id="reward-description" maxlength="500" rows="3"></textarea></label><label>Points required<input id="reward-cost" type="number" min="1" max="1000000000" step="1" required></label><label class="check-row"><input type="checkbox" id="reward-active">Available for redemption</label><p class="note">Rewards are collected from the store; they do not automatically discount a shopping basket. Hiding a reward preserves existing claims and their original terms.</p><button>Save reward</button></form></details>
-<details class="reward-admin-part"><summary>Customer balances</summary><label>Account<select id="reward-customer"><option value="">Choose an account</option></select></label><p id="reward-selected-balance" class="note"></p><form id="reward-adjust-form"><label>Point adjustment (use a negative number to deduct)<input id="reward-adjust-amount" type="number" min="-1000000" max="1000000" step="1" required></label><label>Reason<textarea id="reward-adjust-note" minlength="5" maxlength="500" rows="3" required></textarea></label><button>Apply points adjustment</button></form><div id="reward-selected-history"></div></details>
-</section><section class="card" id="reward-team" hidden><details><summary>Reward collection queue</summary><p class="note">Match the customer's name and claim reference before handing over a reward. Cancelling a pending claim returns its points once.</p><button type="button" id="reward-queue-refresh">Refresh claims</button><p id="reward-team-status" role="status" aria-live="polite"></p><div id="reward-queue"></div></details></section><label id="client-label" hidden="">
+      </div><div class="management-account-picker"><label id="client-label" hidden="">
         Account to manage
         <select id="client-select"></select>
-      </label>
-
-      <p id="management-note" class="note"></p>
-
-      <!-- Staff-assisted recovery -->
-          <!-- Staff package editor -->
-          
-
-      <section class="card" id="owner-downgrade-panel" hidden="">
+      </label><p id="management-note" class="note"></p></div><div class="management-grid"><section class="card" id="reward-management" hidden=""><p class="eyebrow">ADMINISTRATOR · LOYALTY</p><h2>Rewards management</h2><p id="reward-admin-status" role="status" aria-live="polite"></p>
+<details class="reward-admin-part" open=""><summary>Earning rules</summary><form id="reward-rules-form"><label class="check-row"><input type="checkbox" id="reward-enabled">Earn points on new orders</label><label>Spend amount ($)<input type="number" id="reward-spend" min="1" max="1000000" step="0.01" required=""></label><label>Points per spend amount<input type="number" id="reward-earn" min="1" max="1000" step="1" required=""></label><p class="note">Whole spend blocks only. For example, 1 point per $100 gives 2 points for $250 of items. Rules are saved with new orders. Points are awarded after payment is marked paid and the handover PIN completes delivery or collection. Earlier orders are not backfilled.</p><button>Save earning rules</button></form></details>
+<details class="reward-admin-part"><summary>Reward catalogue</summary><label>Reward<select id="reward-edit-select"><option value="">New reward</option></select></label><button type="button" id="reward-new">Add new reward</button><form id="reward-edit-form"><label>Reward name<input id="reward-title" maxlength="80" required=""></label><label>What the customer receives<textarea id="reward-description" maxlength="500" rows="3"></textarea></label><label>Points required<input id="reward-cost" type="number" min="1" max="1000000000" step="1" required=""></label><label class="check-row"><input type="checkbox" id="reward-active">Available for redemption</label><p class="note">Rewards are collected from the store; they do not automatically discount a shopping basket. Hiding a reward preserves existing claims and their original terms.</p><button>Save reward</button></form></details>
+<details class="reward-admin-part"><summary>Customer balances</summary><label>Account<select id="reward-customer"><option value="">Choose an account</option></select></label><p id="reward-selected-balance" class="note"></p><form id="reward-adjust-form"><label>Point adjustment (use a negative number to deduct)<input id="reward-adjust-amount" type="number" min="-1000000" max="1000000" step="1" required=""></label><label>Reason<textarea id="reward-adjust-note" minlength="5" maxlength="500" rows="3" required=""></textarea></label><button>Apply points adjustment</button></form><div id="reward-selected-history"></div></details>
+</section><section class="card" id="reward-team" hidden=""><details><summary>Reward collection queue</summary><p class="note">Match the customer's name and claim reference before handing over a reward. Cancelling a pending claim returns its points once.</p><button type="button" id="reward-queue-refresh">Refresh claims</button><p id="reward-team-status" role="status" aria-live="polite"></p><div id="reward-queue"></div></details></section><section class="card" id="owner-downgrade-panel" hidden="">
         <h2>Downgrade customer account owner to employee</h2>
         <p id="owner-downgrade-target"></p>
         <p>Their login and memberships in other businesses stay with this account. Their former business package, documents, discussions, members and staff assignments are retained but unavailable while this account is an employee. Upgrading it again restores that business access.</p>
@@ -259,19 +208,15 @@
           </label>
           <button type="submit">Downgrade to employee</button>
         </form>
-      </section>
-
-      <section class="card" id="staff-promotion-panel" hidden>
+      </section><section class="card" id="staff-promotion-panel" hidden="">
         <h2>Upgrade customer to staff</h2>
         <p id="staff-promotion-target"></p>
         <p>Staff can use team chat and manage only assigned customers, orders and parcels. This does not grant administrator access. Customer records are retained, but the account will use the staff portal. The person must sign in again.</p>
         <form id="staff-promotion-form">
-          <label><input id="staff-promotion-confirmed" type="checkbox" required> I intend to grant staff access to this account.</label>
+          <label><input id="staff-promotion-confirmed" type="checkbox" required=""> I intend to grant staff access to this account.</label>
           <button type="submit">Upgrade to staff</button>
         </form>
-      </section>
-
-      <section class="card" id="owner-upgrade-panel" hidden="">
+      </section><section class="card" id="owner-upgrade-panel" hidden="">
         <h2>Upgrade employee to customer account owner</h2>
         <p id="owner-upgrade-target"></p>
         <p>This adds their own business portal. Their login, existing memberships and administrator conversation are preserved.</p>
@@ -280,9 +225,7 @@
           <label><input id="owner-upgrade-confirmed" type="checkbox" required=""> I intend to upgrade the selected employee to a customer account owner.</label>
           <button>Upgrade selected employee</button>
         </form>
-      </section>
-
-      <section class="card" id="employee-members-panel" hidden="">
+      </section><section class="card" id="employee-members-panel" hidden="">
         <h2>Business employees and members</h2>
         <p>Add an existing employee login to this business. Access is active immediately; their password and recovery code stay unchanged.</p>
         <form id="employee-add-form">
@@ -290,9 +233,7 @@
           <button>Add employee to selected business</button>
         </form>
         <div id="employee-member-list"></div>
-      </section>
-
-      <section class="card" id="staff-assignment-panel" hidden="">
+      </section><section class="card" id="staff-assignment-panel" hidden="">
         <h2>Assigned staff</h2>
         <p>Assigned staff can manage this business's package and customer discussion. Administrators retain access to all accounts.</p>
         <form id="staff-assignment-form">
@@ -301,9 +242,7 @@
         </form>
         <div id="staff-assignment-list"></div>
         <p id="assignment-note" class="note"></p>
-      </section>
-
-      <section class="card" id="staff-recovery" hidden="">
+      </section><section class="card" id="staff-recovery" hidden="">
         <h2>Recover selected account</h2>
 
         <p>
@@ -353,10 +292,7 @@
             Credentials delivered — clear
           </button>
         </div>
-      </section>
-
-      <!-- Customer account deletion -->
-      <section class="card danger-zone" id="account-deletion" hidden="">
+      </section><section class="card danger-zone" id="account-deletion" hidden="">
         <h2>Delete selected customer account</h2>
 
         <p id="delete-target"></p>
@@ -388,8 +324,71 @@
             Permanently delete customer
           </button>
         </form>
-      </section>
-    </section>
+      </section></div>
+      
+      
+
+
+
+
+
+      
+
+      
+
+      
+
+      <!-- Staff-assisted recovery -->
+          <!-- Staff package editor -->
+          
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!-- Customer account deletion -->
+      
+    </section><div hidden="" id="management-compatibility"><section class="card" id="tuck-truck-management" hidden="">
+        <h2>Tuck truck banner</h2>
+        <p>Show the truck’s current location on the main website and delivery portal. This location is public.</p>
+        <form id="tuck-truck-form">
+          <label class="tuck-truck-toggle"><input id="tuck-truck-enabled" type="checkbox"> Enable tuck truck banner</label>
+          <label>Location<input id="tuck-truck-location" maxlength="160" placeholder="e.g. Legion Square"></label>
+          <button type="submit">Save banner</button>
+        </form>
+        <p id="tuck-truck-status" role="status" aria-live="polite"></p>
+      </section><section id="store-manager" class="card" hidden=""><p class="eyebrow">ADMINISTRATOR · SHOP SETTINGS</p><h2>Products &amp; stock</h2><button id="store-menu-refresh" type="button">Reload stock</button><div class="catalogue-actions"><button type="button" id="store-add-product">Add new item +</button><p class="note">Add a product once here. Visible products appear on the storefront automatically.</p></div><label>Product<select id="store-product-select"><option value="">New product</option></select></label><form id="store-product-form"><label>Name<input id="store-product-name" maxlength="100" required=""></label><label>Category<input id="store-product-category" required="" maxlength="60" list="store-category-options" placeholder="Choose a category or type a new one"><datalist id="store-category-options"></datalist></label><label>Description<textarea id="store-product-description" maxlength="300" rows="2"></textarea></label><label>Price ($)<input id="store-product-price" type="number" min="0" max="10000000" step="0.01" required=""></label><label>Available stock<input id="store-product-stock" type="number" min="0" max="100000" required=""></label><div class="catalogue-photo"><label>Product photo<input id="store-product-file" type="file" accept="image/jpeg,image/png,image/webp"><span class="note">JPG, PNG or WebP, up to 5 MB. Product photos are public.</span></label><button type="button" id="store-upload-photo">Upload selected photo</button><label>Photo URL (optional)<input id="store-product-image" type="url" maxlength="2048" placeholder="https://…"><span class="note">Upload a photo above or paste a hosted image URL. Leave blank to use an illustration.</span></label></div><label>Illustration<select id="store-product-art"><option>onigiri</option><option>bento</option><option>ramen</option><option>tea</option><option>soda</option><option>chips</option><option>candy</option><option>pantry</option></select></label><label class="check-row"><input type="checkbox" id="store-product-available" checked="">Show this product on the menu</label><div class="catalogue-preview" aria-label="Product preview"><p class="eyebrow">LIVE PREVIEW</p><img id="store-preview-image" alt="Product preview" width="220" height="180"><strong id="store-preview-name">New item</strong><p id="store-preview-category">Category</p><p id="store-preview-description"></p><span id="store-preview-price">$0.00</span></div><button>Save item</button></form><p id="store-manager-status" role="status" aria-live="polite"></p><details class="store-preferences"><summary>Delivery fees and ordering settings</summary><form id="store-settings-form"><p class="note">Delivery fee: 10% of the items subtotal, rounded to the nearest cent. Collection has no delivery fee.</p><input type="hidden" id="store-delivery-fee"><label>Parcel holding fee ($)<input type="number" id="store-parcel-fee" min="0" max="10000000" step="0.01" required=""></label><label class="check-row"><input type="checkbox" id="store-enabled">Accept new orders and parcel bookings</label><label class="check-row"><input type="checkbox" id="store-sample">Show sample menu / price notice</label><button>Save store settings</button></form></details></section><section class="card" id="announcement-composer" hidden="">
+        <p class="eyebrow">ADMINISTRATOR · ALL ACCOUNTS</p>
+        <h2>Send an announcement</h2>
+        <p>Post a notice to every existing account’s notification bell. Accounts with push enabled also receive a generic  reminder on their subscribed devices.</p>
+        <form id="announcement-form">
+          <label>Title
+            <input id="announcement-title" maxlength="100" required="">
+          </label>
+          <label>Announcement
+            <textarea id="announcement-body" rows="5" maxlength="2000" required=""></textarea>
+          </label>
+          <div class="announcement-preview" aria-label="Announcement preview">
+            <p class="eyebrow">PREVIEW</p>
+            <strong id="announcement-preview-title">Announcement title</strong>
+            <p id="announcement-preview-body">Your announcement will appear here.</p>
+          </div>
+          <label class="announcement-confirmation">
+            <input id="announcement-confirmed" type="checkbox" required="">
+            <span>I intend to send this announcement to every portal account.</span>
+          </label>
+          <button type="submit">Send to all accounts</button>
+        </form>
+        <p id="announcement-send-status" role="status" aria-live="polite"></p>
+      </section></div>
 
     <!-- Toast notifications -->
     <div id="copy-toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
@@ -431,7 +430,7 @@
   <script src="assets/js/portal-compat.js?v=catalogue-1"></script>
   <script src="assets/js/vendor/supabase-2.57.4-compat.js?v=phone-1"></script>
   <script src="assets/js/portal-config.js"></script>
-  <script src="assets/js/store-config.js?v=catalogue-1"></script><script src="assets/js/product-images.js?v=catalogue-1"></script><script src="assets/js/delivery-map.js?v=gestures-1"></script><script src="assets/js/delivery.js?v=map-1"></script><script src="assets/js/rewards.js?v=rewards-1"></script><script src="assets/js/portal-demo.js?v=rewards-1"></script><script src="assets/js/tuck-truck.js?v=1"></script><script src="assets/js/portal.js?v=tuck-truck-1"></script>
+  <script src="assets/js/store-config.js?v=catalogue-1"></script><script src="assets/js/product-images.js?v=catalogue-1"></script><script src="assets/js/delivery-map.js?v=gestures-1"></script><script src="assets/js/delivery.js?v=management-split-1"></script><script src="assets/js/rewards.js?v=management-split-1"></script><script src="assets/js/portal-demo.js?v=rewards-1"></script><script src="assets/js/tuck-truck.js?v=management-split-1"></script><script src="assets/js/portal.js?v=management-split-1"></script>
 
 
 </body></html>
