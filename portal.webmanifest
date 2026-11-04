@@ -5,8 +5,8 @@
   "start_url": "./portal.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#fff9ed",
-  "theme_color": "#174c3d",
+  "background_color": "#FCFCFA",
+  "theme_color": "#F9D6E0",
   "icons": [
     {
       "src": "assets/images/app-icon-192.png",
