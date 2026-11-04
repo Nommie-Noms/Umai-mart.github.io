@@ -66,7 +66,7 @@
   finally {busy=false; buttons.forEach(function(button){button.disabled=false;});syncCopyButtons();syncPushControls();if(window.UMAI_DELIVERY)window.UMAI_DELIVERY.syncAvailability();}
  }
  function clearDashboard() {
-  if(window.UMAI_REWARDS)window.UMAI_REWARDS.clear();if(window.UMAI_DELIVERY)window.UMAI_DELIVERY.clear();
+  if(window.UMAI_TUCK_TRUCK)window.UMAI_TUCK_TRUCK.clear();if(window.UMAI_REWARDS)window.UMAI_REWARDS.clear();if(window.UMAI_DELIVERY)window.UMAI_DELIVERY.clear();
   announcementRequest=null;requestedAnnouncement=null;hide('announcement-composer',true);text('announcement-send-status','');value('announcement-title','');value('announcement-body','');if($('announcement-confirmed'))$('announcement-confirmed').checked=false;syncAnnouncementPreview();
   pushSetupVersion++;pushRegistration=null;pushPublicKey=null;hide('portal-push-settings',true);text('portal-push-status','');
   closePortalMenu(false);hide('portal-menu-button',true);paymentRecords=[];paymentBusiness=null;paymentPreferred=null;
@@ -150,6 +150,7 @@
   $('account-name').textContent=profile.display_name;
   $('role-label').textContent=administrator?'ADMINISTRATOR':staff?'TEAM ACCOUNT':accountTypes[accountId]==='employee'?'EMPLOYEE ACCOUNT':'CUSTOMER ACCOUNT';
   if(window.UMAI_DELIVERY)await window.UMAI_DELIVERY.mount({client:client,user:user,profile:profile,staff:staff,administrator:administrator,page:page,selected:!staff && accountTypes[accountId]==='business_owner'?accountId:null});
+  if(window.UMAI_TUCK_TRUCK)await window.UMAI_TUCK_TRUCK.mount({client:client,administrator:administrator,page:page});
   if(window.UMAI_REWARDS)await window.UMAI_REWARDS.mount({client:client,user:user,staff:staff,administrator:administrator,page:page});
   hide('announcement-composer',page!=='management' || !administrator);hide('portal-menu-button',false);hide('notifications-button',false);hide('management-link',!staff);hide('staff-chat-link',!staff);hide('client-label',!staff);hide('service-editor',true);
   if(page==='settings'){hide('account',true);hide('dashboard',false);loadPortalPush();await loadBusinessSettings();startNotifications();return;}
