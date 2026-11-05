@@ -23,5 +23,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 body.umai-portal .desk-tabs button[aria-pressed=true]{background:#F9D6E0!important;color:#000!important}
 body.umai-portal .tabs button[aria-pressed=true]{background:#F9D6E0;color:#000}
 
-/* Portal navigation links use black labels in every state. */
-body.umai-portal .button-link,body.umai-portal .button-link:visited,body.umai-portal .button-link:hover,body.umai-portal .button-link:focus,body.umai-portal .button-link:active,body.umai-portal .button-link[aria-current="page"]{color:#000!important}
+/* Hamburger menu links: black text in every state. */
+body.umai-portal .portal-navigation.portal-menu a.button-link,
+body.umai-portal .portal-navigation.portal-menu a.button-link:visited,
+body.umai-portal .portal-navigation.portal-menu a.button-link:hover,
+body.umai-portal .portal-navigation.portal-menu a.button-link:focus,
+body.umai-portal .portal-navigation.portal-menu a.button-link:active,
+body.umai-portal .portal-navigation.portal-menu a.button-link[aria-current="page"]{color:#000!important}
