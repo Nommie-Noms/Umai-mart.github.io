@@ -18,3 +18,10 @@ body.umai-portal .notification-item,body.umai-portal .message{color:#452A37}
 body.umai-portal .danger-zone{border-color:#A93555}body.umai-portal .danger-button{background:#A93555;color:#FCFCFA}body.umai-portal .danger-button:hover{background:#8C2643;color:#FCFCFA}
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #97516F;outline-offset:3px}
 .tuck-truck-banner{border-color:#E5C5D1}
+
+/* Selected portal menu tabs: black labels on pink. */
+body.umai-portal .desk-tabs button[aria-pressed=true]{background:#F9D6E0!important;color:#000!important}
+body.umai-portal .tabs button[aria-pressed=true]{background:#F9D6E0;color:#000}
+
+/* Portal navigation links use black labels in every state. */
+body.umai-portal .button-link,body.umai-portal .button-link:visited,body.umai-portal .button-link:hover,body.umai-portal .button-link:focus,body.umai-portal .button-link:active,body.umai-portal .button-link[aria-current="page"]{color:#000!important}
