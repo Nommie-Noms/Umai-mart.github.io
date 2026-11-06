@@ -4,7 +4,7 @@
  var banner=document.getElementById('tuck-truck-banner'),panel=document.getElementById('tuck-truck-management'),form=document.getElementById('tuck-truck-form');
  function draw(row){
   if(!banner)return;
-  var label=row && row.enabled && row.location?'The tuck truck is at '+row.location:'';
+  var label=row && row.enabled && row.location?"The Snackin' Wagon is at "+row.location:'';
   if(banner.getAttribute('data-location-label')===label)return;
   banner.setAttribute('data-location-label',label);banner.textContent='';banner.hidden=!label;if(!label)return;
   var track=document.createElement('span');track.className='tuck-truck-track';
