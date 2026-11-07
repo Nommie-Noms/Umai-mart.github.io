@@ -1,0 +1,10 @@
+.faq-copy{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.8}
+.faq-entry{border-top:1px solid #E5C5D1;padding:20px 0}
+.faq-entry summary{cursor:pointer;font-weight:700;font-size:18px;overflow-wrap:anywhere}
+.faq-editor-entry{border:1px solid #E5C5D1;padding:16px;margin:20px 0;min-width:0}
+.faq-editor-actions{display:flex;flex-wrap:wrap;gap:10px}
+#faq-editor-preview:not(:empty){border-top:1px solid #E5C5D1;margin-top:24px;padding-top:20px}
+#faq-editor-form .check-row{display:flex;align-items:center;gap:10px}
+#faq-editor-form .check-row input{width:auto;margin:0}
+.faq-public-nav{display:flex;gap:16px;flex-wrap:wrap}
+@media(max-width:600px){.faq-public-nav{gap:10px}.faq-entry summary{font-size:16px}}
