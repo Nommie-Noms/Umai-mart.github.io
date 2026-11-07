@@ -57,7 +57,7 @@
   });
   window.addEventListener('storage',function(event){if(event.key===storageKey){cart=readCart();renderBasket();}});
   if(config.location)$('location-text').textContent=config.location;if(config.hours)$('hours-text').textContent=config.hours;if(config.deliveryNote)$('delivery-note').textContent=config.deliveryNote;
-  if(config.phone){var phone=$('copy-phone');phone.disabled=false;phone.textContent=config.phone+' · Copy number';phone.onclick=async function(){toast(await copy(config.phone)?'Phone number copied.':'Copy is unavailable in this browser.');};}
+  var contactNumber=$('copy-phone').getAttribute('data-phone') || config.phone;if(contactNumber){var phone=$('copy-phone');phone.disabled=false;phone.textContent=contactNumber+' · Copy number';phone.onclick=async function(){toast(await copy(contactNumber)?'Phone number copied.':'Copy is unavailable in this browser.');};}
   if(!config.sampleMenu){$('sample-label').textContent='ALL PRICES · $';$('menu-notice').textContent='Save a shopping list and confirm live prices in the delivery portal.';}
   cart=readCart();renderFilters();renderProducts();renderBasket();
   // A separate Umai Mart backend is optional until configured. Never contact Quill & Ink.
