@@ -1,60 +1,243 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#174c3d">
-  <meta name="description" content="Umai Mart — a konbini-inspired convenience store for everyday shopping. Browse snacks, drinks and everyday essentials in your neighbourhood.">
-  <title>Umai Mart — Little store. Big goodness.</title>
-  <link rel="icon" href="assets/images/app-icon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
-  <link rel="stylesheet" href="assets/css/store.css?v=white-pink-black-text-1">
-  <script defer="" src="assets/js/store-config.js?v=catalogue-1"></script><script defer="" src="assets/js/portal-config.js"></script>
-  <script src="assets/js/product-images.js?v=catalogue-1" defer=""></script><script defer="" src="assets/js/store.js?v=contact-number-1"></script>
-  <link rel="stylesheet" href="assets/css/tuck-truck.css?v=white-pink-black-text-1">
-  <script defer="" src="assets/js/tuck-truck.js?v=snackin-wagon-1"></script>
-  <link rel="stylesheet" href="assets/css/pink-theme.css?v=portal-menu-fix-2">
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <div class="top-strip"><span>YOUR NEIGHBOURHOOD · EVERYDAY GOODNESS</span><span>LITTLE STORE. BIG GOODNESS.</span></div>
-  <header class="site-header">
-    <a class="brand" href="index.html" aria-label="Umai Mart home"><img src="assets/images/umai-logo.svg?v=white-pink-2" width="210" height="63" alt="Umai Mart — Little store. Big goodness."></a>
-    <nav id="main-nav" aria-label="Main navigation">
-      <a href="#shop">The shelves</a><a href="#about">Our little store</a><a href="#visit">Find us</a>
-    <a href="delivery-faq.html">Delivery FAQ</a></nav>
-    <div class="header-actions">
-      <a class="basket-button header-portal-button" href="portal.html">Delivery portal</a>
-      <button class="basket-button" id="open-basket" type="button" aria-haspopup="dialog">Your basket <span id="basket-count">0</span></button>
-      <button class="menu-button" id="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Open navigation">☰</button>
+<html lang="en">
+  <!-- Page metadata, stylesheets and scripts -->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#174c3d">
+    <meta
+      name="description"
+      content="Umai Mart — a konbini-inspired convenience store for everyday shopping. Browse snacks, drinks and everyday essentials in your neighbourhood."
+    >
+    <title>Umai Mart — Little store. Big goodness.</title>
+    <link rel="icon" href="assets/images/app-icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+    <link rel="stylesheet" href="assets/css/store.css?v=white-pink-black-text-1">
+    <script defer="" src="assets/js/store-config.js?v=catalogue-1"></script>
+    <script defer="" src="assets/js/portal-config.js"></script>
+    <script src="assets/js/product-images.js?v=catalogue-1" defer=""></script>
+    <script defer="" src="assets/js/store.js?v=contact-number-1"></script>
+    <link rel="stylesheet" href="assets/css/tuck-truck.css?v=white-pink-black-text-1">
+    <script defer="" src="assets/js/tuck-truck.js?v=snackin-wagon-1"></script>
+    <link rel="stylesheet" href="assets/css/pink-theme.css?v=portal-menu-fix-2">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="top-strip">
+      <span>YOUR NEIGHBOURHOOD · EVERYDAY GOODNESS</span>
+      <span>LITTLE STORE. BIG GOODNESS.</span>
     </div>
-  </header>
-  <div id="tuck-truck-banner" class="tuck-truck-banner" role="status" aria-live="polite" hidden=""></div>
-  <main id="main">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow"><span class="small-spark" aria-hidden="true">✳</span> A LITTLE TASTE OF THE EVERYDAY</p>
-        <h1 id="hero-title">Good things.<br>Just around<br><span>the corner.</span></h1>
-        <p class="hero-description">Snack breaks. Late lunches. One more drink for the road. Your konbini-inspired corner store, made for life in your neighbourhood.</p>
-        <div class="hero-actions"><a class="button primary" href="#shop">Browse the shelves <span aria-hidden="true">↗</span></a></div>
-        <p class="hero-footnote">うまいマート <span aria-hidden="true">/</span> A little store with a lot of good stuff.</p>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Umai Mart home">
+        <img
+          src="assets/images/umai-logo.svg?v=white-pink-2"
+          width="210"
+          height="63"
+          alt="Umai Mart — Little store. Big goodness."
+        >
+      </a>
+      <!-- Main navigation -->
+      <nav id="main-nav" aria-label="Main navigation">
+        <a href="#shop">The shelves</a>
+        <a href="#about">Our little store</a>
+        <a href="#visit">Find us</a>
+        <a href="delivery-faq.html">Delivery FAQ</a>
+      </nav>
+      <div class="header-actions">
+        <a class="basket-button header-portal-button" href="portal.html">Delivery portal</a>
+        <button class="basket-button" id="open-basket" type="button" aria-haspopup="dialog">Your basket <span id="basket-count">0</span></button>
+        <button
+          class="menu-button"
+          id="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="main-nav"
+          aria-label="Open navigation"
+        >☰</button>
       </div>
-      <figure class="hero-art"><img src="assets/images/store-haul.svg?v=white-pink-2" width="850" height="800" alt="Illustrated Umai Mart shopping bag with peach tea, onigiri, nori chips and melon soda."></figure>
-    </section>
-    <div class="ticker" aria-label="Ready to eat, snacks, drinks and everyday essentials"><span>READY TO EAT</span><span aria-hidden="true">✳</span><span>SNACK BREAKS</span><span aria-hidden="true">✳</span><span>COLD DRINKS</span><span aria-hidden="true">✳</span><span>EVERYDAY ESSENTIALS</span></div>
-    <section id="shop" class="shop-section section-wrap" aria-labelledby="shop-title">
-      <div class="section-heading"><div><p class="eyebrow">A QUICK LOOK AROUND</p><h2 id="shop-title">Meet your new<br>everyday favourites.</h2></div><p class="section-description">From the first bite to the last sip.<br>Find a little something for your day.</p></div>
-      <div class="shop-toolbar"><div id="category-filters" class="filters" role="group" aria-label="Filter products"><button type="button" data-category="All" aria-pressed="true">All the good stuff</button><button type="button" data-category="Ready to eat" aria-pressed="false">Ready to eat</button><button type="button" data-category="Snacks" aria-pressed="false">Snacks</button><button type="button" data-category="Drinks" aria-pressed="false">Drinks</button><button type="button" data-category="Pantry" aria-pressed="false">Pantry</button></div><span id="sample-label" class="sample-label">SAMPLE MENU · $</span></div>
-      <p class="menu-notice" id="menu-notice">This is a preview range with sample prices. Confirm live prices and availability in the delivery portal.</p>
-      <div id="product-grid" class="product-grid" aria-live="polite"></div>
-      <noscript><p>Enable JavaScript to browse the sample menu and save a basket. No orders are being accepted on this preview.</p></noscript>
-    </section>
-    <section id="about" class="about-section" aria-labelledby="about-title"><div class="about-label"><span class="about-symbol" aria-hidden="true">う</span><p>YOUR FRIENDLY<br>NEIGHBOURHOOD UMAI.</p></div><div class="about-copy"><p class="eyebrow">SMALL STORE ENERGY. BIG CITY DAYS.</p><h2 id="about-title">For the in-between<br>bits of your day.</h2><p>The stop before a shift. The snack after a long drive. The lunch you forgot to pack. Umai Mart brings a little konbini spirit to the city: simple favourites, everyday essentials and something worth popping in for.</p><a class="text-link" href="#shop">Take a look around <span aria-hidden="true">→</span></a></div></section>
-    <section id="delivery" class="delivery-section section-wrap" aria-labelledby="delivery-title"><div class="delivery-intro"><p class="eyebrow">YOUR CORNER STORE, ON THE WAY</p><h2 id="delivery-title">The good stuff.<br><span>To your doorstep.</span></h2><p id="delivery-note">Sign in to place a delivery order, track its progress or book a parcel to leave at Umai Mart for collection.</p><a class="button primary" href="portal.html">Delivery portal <span aria-hidden="true">↗</span></a><p class="quiet-note">Your basket stays in this browser until you confirm the order in the portal. Umai Mart can also hold a parcel for a named recipient to collect.</p></div><ol class="delivery-steps"><li><span class="step-number">01</span><div><h3>Pick your favourites.</h3><p>Browse the shelves and build a little basket. Your list stays saved for your next visit.</p></div></li><li><span class="step-number">02</span><div><h3>A place for your delivery.</h3><p>Sign in to the delivery portal and provide your  delivery details.</p></div></li><li><span class="step-number">03</span><div><h3>From our store to your door.</h3><p>Track your order and message the Umai team through your delivery portal.</p></div></li></ol></section>
-    <section id="visit" class="visit-section section-wrap" aria-labelledby="visit-title"><div class="section-heading"><div><p class="eyebrow">COME SAY HELLO</p><h2 id="visit-title">Your next little stop.</h2></div><span class="visit-mark" aria-hidden="true">umai.</span></div><div class="visit-grid"><div><p class="eyebrow">FIND THE STORE</p><h3 id="location-text">Location to be announced.</h3><p>Your neighbourhood</p></div><div><p class="eyebrow">OPENING HOURS</p><h3 id="hours-text">Hours coming soon.</h3><p>Check back before making the trip.</p></div><div><p class="eyebrow">GET IN TOUCH</p><h3>Let’s talk good stuff.</h3><button class="text-link" id="copy-phone" type="button" data-phone="8356439887" aria-label="Copy phone number 8356439887">8356439887 · Copy number</button></div></div></section>
-  </main>
-  <footer class="site-footer"><div class="footer-top"><a href="index.html" class="footer-brand">umai<span>.</span> <small>MART</small></a><p>Little store.<br>Big goodness.</p><div><a href="#shop">Browse the shelves</a><a href="portal.html">Delivery portal</a><a href="#visit">Find us</a></div></div><div class="footer-bottom"><span>Umai Mart · Little store. Big goodness.</span><span>All prices in dollars. Delivery and parcel collection.</span></div></footer>
-  <div id="basket-overlay" class="basket-overlay" hidden=""><section id="basket-dialog" class="basket-dialog" role="dialog" aria-modal="true" aria-labelledby="basket-title" tabindex="-1"><div class="basket-heading"><div><p class="eyebrow">A LITTLE HAUL</p><h2 id="basket-title">Your basket.</h2></div><button id="close-basket" class="close-button" type="button" aria-label="Close basket">×</button></div><div id="basket-items" class="basket-items"></div><div class="basket-summary"><div><span>Items subtotal</span><strong id="basket-subtotal">$0</strong></div><p>Estimated items subtotal. Confirm live prices and delivery fees in the portal.</p><button class="button primary" id="copy-basket" type="button">Copy shopping list</button><a class="button secondary" href="portal.html">Delivery portal <span aria-hidden="true">→</span></a><p class="quiet-note">Your basket is a saved shopping list. Sign in and confirm in the portal to place an order.</p></div></section></div>
-  <div id="toast" class="store-toast" role="status" aria-live="polite" aria-atomic="true"></div>
-
-
-</body></html>
+    </header>
+    <!-- Snackin' Wagon location banner -->
+    <div id="tuck-truck-banner" class="tuck-truck-banner" role="status" aria-live="polite" hidden=""></div>
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="small-spark" aria-hidden="true">✳</span> A LITTLE TASTE OF THE EVERYDAY</p>
+          <h1 id="hero-title">Good things.<br>Just around<br><span>the corner.</span></h1>
+          <p class="hero-description">Snack breaks. Late lunches. One more drink for the road. Your konbini-inspired corner store, made for life in your neighbourhood.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#shop">Browse the shelves <span aria-hidden="true">↗</span></a>
+          </div>
+          <p class="hero-footnote">うまいマート <span aria-hidden="true">/</span> A little store with a lot of good stuff.</p>
+        </div>
+        <figure class="hero-art">
+          <img
+            src="assets/images/store-haul.svg?v=white-pink-2"
+            width="850"
+            height="800"
+            alt="Illustrated Umai Mart shopping bag with peach tea, onigiri, nori chips and melon soda."
+          >
+        </figure>
+      </section>
+      <div class="ticker" aria-label="Ready to eat, snacks, drinks and everyday essentials">
+        <span>READY TO EAT</span>
+        <span aria-hidden="true">✳</span>
+        <span>SNACK BREAKS</span>
+        <span aria-hidden="true">✳</span>
+        <span>COLD DRINKS</span>
+        <span aria-hidden="true">✳</span>
+        <span>EVERYDAY ESSENTIALS</span>
+      </div>
+      <!-- Product catalogue -->
+      <section id="shop" class="shop-section section-wrap" aria-labelledby="shop-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">A QUICK LOOK AROUND</p>
+            <h2 id="shop-title">Meet your new<br>everyday favourites.</h2>
+          </div>
+          <p class="section-description">From the first bite to the last sip.<br>Find a little something for your day.</p>
+        </div>
+        <div class="shop-toolbar">
+          <div id="category-filters" class="filters" role="group" aria-label="Filter products">
+            <button type="button" data-category="All" aria-pressed="true">All the good stuff</button>
+            <button type="button" data-category="Ready to eat" aria-pressed="false">Ready to eat</button>
+            <button type="button" data-category="Snacks" aria-pressed="false">Snacks</button>
+            <button type="button" data-category="Drinks" aria-pressed="false">Drinks</button>
+            <button type="button" data-category="Pantry" aria-pressed="false">Pantry</button>
+          </div>
+          <span id="sample-label" class="sample-label">SAMPLE MENU · $</span>
+        </div>
+        <p class="menu-notice" id="menu-notice">This is a preview range with sample prices. Confirm live prices and availability in the delivery portal.</p>
+        <div id="product-grid" class="product-grid" aria-live="polite"></div>
+        <noscript>
+          <p>Enable JavaScript to browse the sample menu and save a basket. No orders are being accepted on this preview.</p>
+        </noscript>
+      </section>
+      <!-- About Umai Mart -->
+      <section id="about" class="about-section" aria-labelledby="about-title">
+        <div class="about-label">
+          <span class="about-symbol" aria-hidden="true">う</span>
+          <p>YOUR FRIENDLY<br>NEIGHBOURHOOD UMAI.</p>
+        </div>
+        <div class="about-copy">
+          <p class="eyebrow">SMALL STORE ENERGY. BIG CITY DAYS.</p>
+          <h2 id="about-title">For the in-between<br>bits of your day.</h2>
+          <p>The stop before a shift. The snack after a long drive. The lunch you forgot to pack. Umai Mart brings a little konbini spirit to the city: simple favourites, everyday essentials and something worth popping in for.</p>
+          <a class="text-link" href="#shop">Take a look around <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+      <!-- Delivery information -->
+      <section id="delivery" class="delivery-section section-wrap" aria-labelledby="delivery-title">
+        <div class="delivery-intro">
+          <p class="eyebrow">YOUR CORNER STORE, ON THE WAY</p>
+          <h2 id="delivery-title">The good stuff.<br><span>To your doorstep.</span></h2>
+          <p id="delivery-note">Sign in to place a delivery order, track its progress or book a parcel to leave at Umai Mart for collection.</p>
+          <a class="button primary" href="portal.html">Delivery portal <span aria-hidden="true">↗</span></a>
+          <p class="quiet-note">Your basket stays in this browser until you confirm the order in the portal. Umai Mart can also hold a parcel for a named recipient to collect.</p>
+        </div>
+        <ol class="delivery-steps">
+          <li>
+            <span class="step-number">01</span>
+            <div>
+              <h3>Pick your favourites.</h3>
+              <p>Browse the shelves and build a little basket. Your list stays saved for your next visit.</p>
+            </div>
+          </li>
+          <li>
+            <span class="step-number">02</span>
+            <div>
+              <h3>A place for your delivery.</h3>
+              <p>Sign in to the delivery portal and provide your  delivery details.</p>
+            </div>
+          </li>
+          <li>
+            <span class="step-number">03</span>
+            <div>
+              <h3>From our store to your door.</h3>
+              <p>Track your order and message the Umai team through your delivery portal.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+      <!-- Store location, opening hours and contact details -->
+      <section id="visit" class="visit-section section-wrap" aria-labelledby="visit-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">COME SAY HELLO</p>
+            <h2 id="visit-title">Your next little stop.</h2>
+          </div>
+          <span class="visit-mark" aria-hidden="true">umai.</span>
+        </div>
+        <div class="visit-grid">
+          <div>
+            <p class="eyebrow">FIND THE STORE</p>
+            <h3 id="location-text">Location to be announced.</h3>
+            <p>Your neighbourhood</p>
+          </div>
+          <div>
+            <p class="eyebrow">OPENING HOURS</p>
+            <h3 id="hours-text">Hours coming soon.</h3>
+            <p>Check back before making the trip.</p>
+          </div>
+          <div>
+            <p class="eyebrow">GET IN TOUCH</p>
+            <h3>Let’s talk good stuff.</h3>
+            <button
+              class="text-link"
+              id="copy-phone"
+              type="button"
+              data-phone="8356439887"
+              aria-label="Copy phone number 8356439887"
+            >8356439887 · Copy number</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-top">
+        <a href="index.html" class="footer-brand">umai<span>.</span> <small>MART</small></a>
+        <p>Little store.<br>Big goodness.</p>
+        <div>
+          <a href="#shop">Browse the shelves</a>
+          <a href="portal.html">Delivery portal</a>
+          <a href="#visit">Find us</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Umai Mart · Little store. Big goodness.</span>
+        <span>All prices in dollars. Delivery and parcel collection.</span>
+      </div>
+    </footer>
+    <!-- Basket dialog -->
+    <div id="basket-overlay" class="basket-overlay" hidden="">
+      <section
+        id="basket-dialog"
+        class="basket-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="basket-title"
+        tabindex="-1"
+      >
+        <div class="basket-heading">
+          <div>
+            <p class="eyebrow">A LITTLE HAUL</p>
+            <h2 id="basket-title">Your basket.</h2>
+          </div>
+          <button id="close-basket" class="close-button" type="button" aria-label="Close basket">×</button>
+        </div>
+        <div id="basket-items" class="basket-items"></div>
+        <div class="basket-summary">
+          <div>
+            <span>Items subtotal</span>
+            <strong id="basket-subtotal">$0</strong>
+          </div>
+          <p>Estimated items subtotal. Confirm live prices and delivery fees in the portal.</p>
+          <button class="button primary" id="copy-basket" type="button">Copy shopping list</button>
+          <a class="button secondary" href="portal.html">Delivery portal <span aria-hidden="true">→</span></a>
+          <p class="quiet-note">Your basket is a saved shopping list. Sign in and confirm in the portal to place an order.</p>
+        </div>
+      </section>
+    </div>
+    <!-- Toast notifications -->
+    <div id="toast" class="store-toast" role="status" aria-live="polite" aria-atomic="true"></div>
+  </body>
+</html>
